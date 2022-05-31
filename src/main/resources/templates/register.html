@@ -54,7 +54,7 @@
 
         <div class="register-input-wrapper">
             <label class="register-label" for="register_password">Slaptažodis: *</label>
-            <input class="register-input" id="register_password" type="password" name="password" th:value="*{password}">
+            <input class="register-input" id="register_password" type="password" name="password" th:value="${password}">
             <div class="register-error-wrapper" th:if="${#fields.hasErrors('password')}">
                 <ul class="register-error-list">
                     <li class="register-error" th:each="error: ${#fields.errors('password')}" th:text="${error}"></li>
@@ -97,8 +97,8 @@
 
         <div class="register-input-wrapper">
             <label class="register-label" for="register_birthdate">Gimimo data: *</label>
-            <input class="register-input" type="text" id="register-birthdate" name="birthDate">
-            <div class="register-error-wrapper" th:if="${#fields.hasErrors('birthDate')}">
+            <input class="register-input" type="text" id="register-birthdate" name="birthDate ">
+            <div class="register-error-wrapper" th:if="${#fields.hasErrors('birthDate')}"  >
                 <ul class="register-error-list">
                     <li class="register-error" th:each="error: ${#fields.errors('birthDate')}" th:text="${error}"></li>
                 </ul>
