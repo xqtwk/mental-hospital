@@ -1,0 +1,25 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+	<nav class="navbar">
+		
+			<div class="nav-links-left">
+				<a class="nav-link" href="/">Pagrindinis</a>
+				<a class="nav-link" sec:authorize="isAuthenticated()" href="/reservations" >Mano rezervacijos</a>
+			</div>
+			<div class="nav-links-right">
+				<div sec:authorize="isAuthenticated()" class="nav-link">
+					Sveiki: <span sec:authentication="name"></span>
+				</div>
+				
+				<a class="nav-link" sec:authorize="!isAuthenticated()" href="/register">Registruotis</a>
+				<a class="nav-link" sec:authorize="!isAuthenticated()" href="/login">Prisijungti</a>
+				<div sec:authorize="isAuthenticated()">
+					<a href="/logout" class="nav-link">Atsijungti</a>
+				</div>
+			</div>
+
+	</nav>
+	<hr class="solid-divider">
+</html>
