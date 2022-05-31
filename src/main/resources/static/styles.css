@@ -1,0 +1,446 @@
+/* Global style */
+*{
+    margin:0;
+    padding:0;
+}
+a, a:hover, a:focus, a:active{
+    text-decoration:none;
+    color:inherit;
+}
+a:visited{
+    color:inherit;
+}
+/* Navbar style */
+.navbar{
+    width:100%;
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.5);
+}
+.nav-link{
+    margin:0px 10px;
+    font-size:18px;
+    font-family: 'Inter', sans-serif;
+}
+hr.solid-divider {
+    border-top: 3px solid black;
+}
+.arrival-date-error{
+    color:white;
+}
+.nav-links-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+/* Room search container styles */
+.room-search-container{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:100%;
+    height:50vh;
+    background:url("./images/hotel-background.jpg") no-repeat fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    background-blend-mode: soft-light;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.search-form-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.search-form{
+    width:100%;
+    height:100%;
+    gap:1%;
+    display:flex;
+    justify-content:center;
+    align-items:baseline;
+}
+.arrivalDate-wrapper, .departureDate-wrapper, .guestCount-wrapper{
+    width:100%;
+    position:relative;
+    font-size:20px;
+    height:20%;
+    border:none;
+    font-family: 'Inter', sans-serif;
+
+}
+
+.search-input-error{
+    list-style:none;
+    color:red;
+}
+.error-list{
+    list-style:none;
+}
+#arrival-date, #departure-date, #guest-count-input{
+    width:100%;
+    font-size:30px;
+    height:70px;
+    border:none;
+    padding:10px;
+    font-family: 'Inter', sans-serif;
+}
+#arrival-date:focus, #departure-date:focus,#guest-count-input:focus{
+    outline:3px solid #86301d;
+}
+#guest-count-input{
+    height:70px;
+    font-size:30px;
+
+    border:none;
+    padding:10px;
+    font-family: 'Inter', sans-serif;
+    width:100%;
+}
+#submit-search-button{
+    transition:background-color 0.3s;
+    cursor:pointer;
+    padding:10px;
+    height:70px;
+    font-size:30px;
+    border:1px solid #86301d;
+    background-color:#86301d;
+    color:white;
+}
+#submit-search-button:hover{
+    background-color:transparent;
+}
+.arrival-date-error{
+    width:100px;
+    color:white;
+    height:100px;
+    z-index:10;
+}
+/* Calendars */
+
+/* Room list */
+.room-list-heading{
+    text-align:center;
+    font-family:"Inter", sans-sarif;
+    margin-top:40px;
+}
+.divider
+{
+    position: relative;
+    height: 1px;
+    margin-top:5px;
+}
+
+.div-transparent:before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, #86301d, transparent);
+}
+.rooms-container{
+    display:flex;
+    width:60%;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+}
+.room-wrapper{
+    font-family:"Inter", sans-sarif;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:30px;
+    border: 3px solid #86301d;
+}
+.room-description{
+    padding:20px;
+    width:80%;
+    font-size:30px;
+}
+.price-container{
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    font-size:23px;
+    gap:20px;
+}
+.more-info-button{
+    cursor:pointer;
+    border:none;
+    background-color:#86301d;
+    color:white;
+    font-family:"Inter", sans-sarif;
+    font-size:20px;
+    padding:15px 40px;
+}
+.reservation-button{
+    cursor:pointer;
+    border:none;
+    background-color:#86301d;
+    color:white;
+    font-family:"Inter", sans-sarif;
+    font-size:30px;
+    padding:15px 40px;
+}
+/* Register styles */
+
+
+.register-heading{
+    text-align:center;
+    font-family:"Inter", sans-sarif;
+    margin-top:80px;
+}
+.register-form{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+.register-input-wrapper{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Inter', sans-sarif;
+    font-size:20px;
+}
+
+.register-input{
+    font-family: 'Inter', sans-sarif;
+    font-size:20px;
+    width:20rem;
+    height:30px;
+}
+.register-input:focus{
+    outline: none !important;
+    border:2px solid #86301d;
+}
+.register-submit{
+    font-family:"Inter", sans-sarif;
+    font-size:25px;
+    cursor:pointer;
+    margin-top:20px;
+    background-color: #86301d;
+    border:none;
+    color:white;
+    padding:20px 35px;
+
+}
+.register-error-wrapper{
+    font-family: 'Inter', sans-sarif;
+    font-size:20px;
+    align-self:flex-start;
+}
+.register-error{
+    width:100%;
+}
+/* login styles */
+.login-heading{
+    text-align:center;
+    font-family:"Inter", sans-sarif;
+    margin-top:80px;
+}
+
+.login-form{
+    font-family:"Inter", sans-sarif;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+.login-input-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.login-submit-button{
+    font-family:"Inter", sans-sarif;
+    font-size:25px;
+    cursor:pointer;
+    margin-top:20px;
+    background-color: #86301d;
+    border:none;
+    color:white;
+    padding:20px 35px;
+}
+.login-input{
+    font-family: 'Inter', sans-sarif;
+    font-size:20px;
+    width:20rem;
+    height:30px;
+}
+.login-input:focus{
+    outline: none !important;
+    border:2px solid #86301d;
+}
+.login-label{
+    font-size:20px;
+}
+
+/* Reservation styles */
+.reservation-heading{
+    text-align:center;
+    font-family:"Inter", sans-sarif;
+    margin-top:80px;
+}
+.reservation-confirm-container{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:40px;
+    font-family:"Inter", sans-sarif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+.reservation-confirm-form{
+    padding:20px;
+    border:3px solid #86301d;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+.reservation-price-container{
+    display:flex;
+    align-self:flex-end;
+    font-weight:600;
+}
+input[type="checkbox"] {
+    transform:scale(2, 2);
+}
+
+.reservation-cancel-button{
+    cursor:pointer;
+    border:2px solid #86301d;
+    font-size:20px;
+    padding:15px 30px;
+    background:transparent;
+    font-family:"Inter", sans-sarif;
+}
+.reservation-submit-button{
+    cursor:pointer;
+    border:2px solid #86301d;
+    color:white;
+    font-size:20px;
+    padding:15px 30px;
+    background:#86301d;
+    font-family:"Inter", sans-sarif;
+}
+.reservation-confirm-buttons{
+    display:flex;
+    justify-content:space-evenly;
+}
+/* room info styles*/
+
+.room-heading{
+    text-align:center;
+    font-family:"Inter", sans-sarif;
+    margin-top:80px;
+}
+.feature-wrapper{
+
+}
+.tagstext{
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+}
+.infotext{
+    font-family: 'Inter', sans-serif;
+}
+.feature{
+    font-family: 'Inter', sans-serif;
+    display:inline-block;
+    color:#444;
+    border-radius: 5px;
+    border:1px solid #CCC;
+    background:#DDD;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    vertical-align:middle;
+    max-width: 100px;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+}
+.room-info-wrapper{
+    margin-top:40px;
+    display:flex;
+    flex-direction:row;
+
+}
+.desc-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+.room-info-container{
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.info-rap{
+    display: flex;
+    flex-direction: row;
+}
+.room-photo-gallery-container{
+    margin-left: 10%;
+    max-width:900px;
+}
+.image-row{
+    display:flex;
+
+    flex-direction:column;
+    gap:10px;
+}
+.image-column{
+    display:flex;
+    gap:10px;
+}
+
+.expanded-picture-container img{
+    max-width:100%;
+}
+
+/* user reservations styles */
+.reservation-table-head, .reservation-table-element{
+    padding:15px;
+    text-align:center;
+    font-family:"Inter", sans-sarif;
+    font-size:20px;
+}
+/* Media queries */
+@media only screen and (max-width: 768px) {
+    .room-search-container{
+        height:100vh;
+        width:100%;
+    }
+    .search-form{
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:10px;
+    }
+    #submit-search-button{
+        width:200px;
+    }
+    .nav-link{
+        font-size:3vw;
+    }
+}
+
