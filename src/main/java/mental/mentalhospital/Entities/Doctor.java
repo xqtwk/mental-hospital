@@ -55,8 +55,6 @@ public class Doctor implements UserDetails {
     @NotEmpty(message = "Slaptažodis privalomas")
     private String password;
 
-
-
     @Column(nullable = false)
     @NotEmpty
     private String type = "user";

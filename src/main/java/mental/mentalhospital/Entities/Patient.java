@@ -50,6 +50,7 @@ public class Patient {
     @JoinColumn(name="city_ID", nullable = false)
     private City city;
 
+
     public Patient(){}
 
     public Patient(
