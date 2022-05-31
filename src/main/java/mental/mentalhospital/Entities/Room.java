@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table( name = "room")
+@Table( name = "rooms")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,39 +12,53 @@ public class Room {
 
     @Column(nullable = false, length = 64)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer number;
-    @Column(columnDefinition="TEXT")
-    String description;
+    private Integer room_number;
     @Column
-    private Integer limit;
+    private String room_description;
+    @Column
+    private Integer patients_limit;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @MapsId
-    @JoinColumn(name="floor_ID", nullable = false, insertable = false, updatable = false)
+    @ManyToOne
+    @JoinColumn(name="floor_ID")
     private Floor floor;
 
-    @OneToMany(mappedBy = "Room")
+    @OneToMany(mappedBy = "room")
     private List<Patient> patients;
     public Room() {}
 
-    public Room(String description, Integer limit) {
-        this.description = description;
-        this.limit = limit;
+    public Room(String room_description, Integer patients_limit) {
+        this.room_description = room_description;
+        this.patients_limit = patients_limit;
+    }
+    public Integer getId() {
+        return id;
     }
 
-    public Integer getLimit() {
-        return limit;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setLimit(Integer limit) {
-        this.limit = limit;
+    public Integer getRoom_number() {
+        return room_number;
     }
 
-    public String getDescription() {
-        return description;
+    public void setRoom_number(Integer room_number) {
+        this.room_number = room_number;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getRoom_description() {
+        return room_description;
+    }
+
+    public void setRoom_description(String room_description) {
+        this.room_description = room_description;
+    }
+
+    public Integer getPatients_limit() {
+        return patients_limit;
+    }
+
+    public void setPatients_limit(Integer patients_limit) {
+        this.patients_limit = patients_limit;
     }
 }

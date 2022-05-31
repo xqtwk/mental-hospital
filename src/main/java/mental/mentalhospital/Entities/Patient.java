@@ -1,16 +1,16 @@
 package mental.mentalhospital.Entities;
 
-import com.sun.istack.NotNull;
 import mental.mentalhospital.Validators.DateConstraint;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table( name = "patient")
+@Table( name = "patients")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class Patient {
     private String birthDate;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @MapsId
     @JoinColumn(name="doctorID", nullable = false, insertable = false, updatable = false)
     private Doctor doctor;

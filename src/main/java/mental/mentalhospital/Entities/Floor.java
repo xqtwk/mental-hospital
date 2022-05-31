@@ -17,14 +17,22 @@ public class Floor {
     @Column
     private Integer room_number;
 
-    @OneToMany(mappedBy = "floor")
-    private List<Room> rooms;
+    /*@OneToMany(mappedBy = "floor")
+    private List<Room> rooms;*/
     public Floor(){}
     public Floor(Integer room_number){
         this.room_number = room_number;
     }
     public Integer getRoom_number() {
         return room_number;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public void setRoom_number(Integer room_number) {

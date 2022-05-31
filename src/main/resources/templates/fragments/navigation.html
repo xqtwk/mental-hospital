@@ -6,7 +6,15 @@
 		
 			<div class="nav-links-left">
 				<a class="nav-link" href="/">Pagrindinis</a>
-				<a class="nav-link" sec:authorize="isAuthenticated()" href="/reservations" >Mano rezervacijos</a>
+				<a class="nav-link" sec:authorize="isAuthenticated()" href="/doctors" >Daktarai</a>
+				<a class="nav-link" sec:authorize="isAuthenticated()" href="/patients" >Pacientai</a>
+				<div class="dropdown">
+					<a sec:authorize="isAuthenticated()" class="dropbtn nav-link">Sisteminiai</a>
+					<div class="dropdown-content">
+				<a class="nav-link" sec:authorize="isAuthenticated()" href="/floors" >Aukštai</a>
+				<a class="nav-link" sec:authorize="isAuthenticated()" href="/rooms" >Kambariai</a>
+					</div>
+				</div>
 			</div>
 			<div class="nav-links-right">
 				<div sec:authorize="isAuthenticated()" class="nav-link">

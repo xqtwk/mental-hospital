@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daktaru pridėjimas/pašalinimas</title>
+</head>
+<body>
+<div th:insert="fragments/navigation.html :: nav"></div>
+<div class="container">
+    <div class="row md-5">
+        <div class="card index">
+            <div class="card-body">
+                <a href="new_client" class="btn btn-dark">Prideti nauja klienta</a>
+                <table class="main-table">
+                    <tr>
+                        <th>Vardas</th>
+                        <th>Pavarde</th>
+                        <th>Email</th>
+                        <th>Telefonas</th>
+                    </tr>
+                    <tr th:each="doctor: ${doctors}" style="border-bottom: 1px solid #D5D5D5">
+                        <td th:text="${doctor.name}"></td>
+                        <td th:text="${doctor.surname}"></td>
+                        <td th:text="${doctor.email}"></td>
+                        <td th:text="${doctor.phone}"></td>
+                        <td>
+                            <a th:href="'update_clients?id='+${doctor.id}" class="btn btn btn-dark">Redaguoti</a>
+                            <a th:href="'delete_client?id='+${doctor.id}" href="#" class="btn btn btn-dark">Pasalinti</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
