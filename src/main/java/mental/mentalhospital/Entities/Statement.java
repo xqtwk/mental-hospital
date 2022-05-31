@@ -1,6 +1,7 @@
 package mental.mentalhospital.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table( name = "statement")
@@ -11,6 +12,8 @@ public class Statement {
     @Column
     private String description;
 
+    /*@OneToMany(mappedBy = "statement")
+    private List<Patient> patients;*/
     public Statement(){}
     public Statement(String description){
         this.description = description;

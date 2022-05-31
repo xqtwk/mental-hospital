@@ -1,6 +1,7 @@
 package mental.mentalhospital.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table( name = "room")
@@ -16,6 +17,14 @@ public class Room {
     String description;
     @Column
     private Integer limit;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @MapsId
+    @JoinColumn(name="floor_ID", nullable = false, insertable = false, updatable = false)
+    private Floor floor;
+
+    @OneToMany(mappedBy = "Room")
+    private List<Patient> patients;
     public Room() {}
 
     public Room(String description, Integer limit) {

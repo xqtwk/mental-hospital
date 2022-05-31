@@ -7,6 +7,8 @@ import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
+
 @Entity
 @Table( name = "patient")
 public class Patient {
@@ -37,7 +39,7 @@ public class Patient {
     private String birthDate;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name="doctorID", nullable = false, insertable = false, updatable = false)
     private Doctor doctor;
@@ -50,6 +52,23 @@ public class Patient {
     @JoinColumn(name="city_ID", nullable = false)
     private City city;
 
+    @ManyToOne
+    @JoinColumn(name="room_ID", nullable = false)
+    private Room room;
+
+    @Column
+    private String statement;
+
+    @Column
+    private String treatment;
+
+   /* @ManyToOne
+    @JoinColumn(name="statement_ID", nullable = false)
+    private Statement statement;
+
+    @ManyToOne
+    @JoinColumn(name="treatment_ID", nullable = false)
+    private Treatment treatment;*/
 
     public Patient(){}
 
@@ -59,7 +78,9 @@ public class Patient {
             @Length(max = 15, message = "Telefonas turi būti ne ilgesnis nei 15 simbolių") @javax.validation.constraints.NotNull @NotEmpty(message = "Telefonas privalomas") String phone,
             @javax.validation.constraints.NotNull @NotEmpty(message = "Adresas privalomas") String address, String birthDate,
             @NotBlank(message = "Pasirinkite lytį") Gender gender,
-            @NotBlank(message = "Pasirinkite miestą") City city) {
+            @NotBlank(message = "Pasirinkite miestą") City city,
+            @NotEmpty(message = "Diagnoze privaloma") String statement,
+            String treatment) {
         super();
         this.name = name;
         this.surname = surname;
@@ -68,6 +89,8 @@ public class Patient {
         this.birthDate = birthDate;
         this.gender = gender;
         this.city = city;
+        this.treatment = treatment;
+        this.statement = statement;
     }
 
     public Integer getId() {
@@ -136,5 +159,29 @@ public class Patient {
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+    public String getStatement() {
+        return statement;
+    }
+
+    public void setStatement(String statement) {
+        this.statement = statement;
+    }
+
+    public String getTreatment() {
+        return treatment;
+    }
+
+    public void setTreatment(String treatment) {
+        this.treatment = treatment;
     }
 }

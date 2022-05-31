@@ -70,8 +70,6 @@ public class Doctor implements UserDetails {
     @JoinColumn(name="city_ID", nullable = false)
     private City city;
 
-
-
     public Doctor(){}
 
     public Doctor(
