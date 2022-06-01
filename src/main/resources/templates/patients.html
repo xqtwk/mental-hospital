@@ -19,7 +19,7 @@
         <div class="card index">
             <div class="card-body">
                 <div style="text-align: center">
-                    <a href="newpatient.html" class="btn btn-dark">Prideti nauja pacienta</a>
+                    <a href="addpatient" class="btn btn-dark">Prideti nauja pacienta</a>
                 </div>
                 <table class="main-table">
                     <tr style="text-align: center">
@@ -28,6 +28,10 @@
                         <th>Telefonas</th>
                         <th>Adresas</th>
                         <th>Gimimo data</th>
+                        <th>Daktaras</th>
+                        <th>Lytis</th>
+                        <th>Diagnozė</th>
+                        <th>Sąlygos</th>
                     </tr>
                     <tr th:each="patient: ${patients}" style="border-bottom: 1px solid #D5D5D5; text-align: center">
                         <td th:text="${patient.name}"></td>
@@ -35,9 +39,13 @@
                         <td th:text="${patient.phone}"></td>
                         <td th:text="${patient.address}"></td>
                         <td th:text="${patient.birthDate}"></td>
+                        <td th:text="${patient.doctor.name} + ' ' + ${patient.doctor.surname}"></td>
+                        <td th:text="${patient.gender.name}"></td>
+                        <td th:text="${patient.statement}"></td>
+                        <td th:text="${patient.treatment}"></td>
                         <td>
-                            <a th:href="'editdoctor?id='+${patient.id}" class="btn">Redaguoti</a>
-                            <a th:href="'deletedoctor?id='+${patient.id}" href="#" class="btn">Pasalinti</a>
+                            <a th:href="'editpatient?id='+${patient.id}" class="btn">Redaguoti</a>
+                            <a th:href="'deletepatient?id='+${patient.id}" href="#" class="btn">Pasalinti</a>
                         </td>
                     </tr>
                 </table>

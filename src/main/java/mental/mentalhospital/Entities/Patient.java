@@ -41,8 +41,7 @@ public class Patient {
 
 
     @ManyToOne
-    @MapsId
-    @JoinColumn(name="doctorID", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name="doctorID", nullable = false)
     private Doctor doctor;
 
     @ManyToOne
@@ -185,4 +184,9 @@ public class Patient {
     public void setTreatment(String treatment) {
         this.treatment = treatment;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 }

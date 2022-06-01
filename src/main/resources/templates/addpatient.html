@@ -15,74 +15,71 @@
 
 </head>
 <body>
-<h1 class="register-heading">Kambario redagavimas</h1>
+<h1 class="register-heading">Paciento pridėjimas</h1>
 <div class="divider div-transparent"></div>
 <div class="register-container">
 
-    <form method="post" class="register-form" action="/editpatient" th:object="${patient}">
+    <form method="post" class="register-form" action="/addpatient" th:object="${patient}">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-        <input type="hidden" name="id" th:value="*{id}">
+
         <div class="register-input-wrapper">
             <label class="register-label" for="name">Vardas: *</label>
-            <input class="register-input" type="text" id="name" name="name" th:value="*{name}">
+            <input class="register-input" type="text" id="name" name="name" th:value="${name}">
         </div>
 
         <div class="register-input-wrapper">
             <label class="register-label" for="surname">Pavarde: *</label>
-            <input class="register-input" type="text" id="surname" name="surname" th:value="*{surname}">
+            <input class="register-input" type="text" id="surname" name="surname" th:value="${surname}">
         </div>
 
         <div class="register-input-wrapper">
             <label class="register-label" for="cityId">Miestas: *</label>
             <select class="register-input" name="cityId" id="cityId">
-                <option th:each="city: ${cities}" th:value="${city.id}" th:text="${city.name}"
-                        th:selected="${city.id == patient.city.id}">
+                <option th:each="city: ${cities}" th:value="${city.id}" th:text="${city.name}">
             </select>
         </div>
         <div class="register-input-wrapper">
             <label class="register-label" for="genderId">Lytis: *</label>
             <select class="register-input" name="genderId" id="genderId">
-                <option th:each="gender: ${genders}" th:value="${gender.id}" th:text="${gender.name}"
-                        th:selected="${gender.id == patient.gender.id}">
+                <option th:each="gender: ${genders}" th:value="${gender.id}" th:text="${gender.name}">
             </select>
         </div>
         <div class="register-input-wrapper">
             <label class="register-label" for="room">Palata</label>
             <select class="register-input" name="room" id="room">
-                <option th:each="room: ${rooms}" th:value="${room.id}" th:text="${room.id}"
-                        th:selected="${room.id == patient.room.id}">
+                <option th:each="room: ${rooms}" th:value="${room.id}" th:text="${room.id}">
             </select>
         </div>
         <div class="register-input-wrapper">
             <label class="register-label" for="doctor">Daktaras</label>
             <select class="register-input" name="doctor" id="doctor">
-                <option th:each="doctor: ${doctors}" th:value="${doctor.id}" th:text="${doctor.name} + ' ' + ${doctor.surname}"
-                    th:selected="${doctor.id == patient.doctor.id}">
+                <option th:each="doctor: ${doctors}" th:value="${doctor.id}" th:text="${doctor.name} + ' ' + ${doctor.surname}">
             </select>
         </div>
         <div class="register-input-wrapper">
             <label class="register-label" for="address">Adresas: *</label>
-            <input class="register-input" id="address" type="text" name="address" th:value="*{address}">
+            <input class="register-input" id="address" type="text" name="address" th:value="${address}">
         </div>
 
         <div class="register-input-wrapper">
             <label class="register-label" for="register_phone">Telefonas: *</label>
-            <input class="register-input" type="text" id="register_phone" name="phone" th:value="*{phone}">
+            <input class="register-input" type="text" id="register_phone" name="phone" th:value="${phone}">
         </div>
 
         <div class="register-input-wrapper">
             <label class="register-label" for="birthDate">Gimimo data: *</label>
-            <input class="register-input" type="text" id="birthDate" name="birthDate" th:value="*{birthDate}">
+            <input class="register-input" type="text" id="birthDate" name="birthDate" th:value="${birthDate}">
         </div>
         <div class="register-input-wrapper">
             <label class="register-label" for="statement">Diagnozė: *</label>
-            <input class="register-input" type="text" id="statement" name="statement" th:value="*{statement}">
+            <input class="register-input" type="text" id="statement" name="statement" th:value="${statement}">
         </div>
         <div class="register-input-wrapper">
             <label class="register-label" for="treatment">Sąlygos: *</label>
-            <input class="register-input" type="text" id="treatment" name="treatment" th:value="*{treatment}">
+            <input class="register-input" type="text" id="treatment" name="treatment" th:value="${treatment}">
         </div>
-        <input class="register-submit" type="submit" value="Prideti">
+
+        <input class="register-submit" type="submit" value="Registruotis">
     </form>
 
 
@@ -90,5 +87,9 @@
 
 
 </div>
+<script>
+    const registerBirthdate = document.querySelector('#register-birthdate');
+    flatpickr(registerBirthdate, {"locale": "lt", "allowInput": true, disableMobile: "true"});
+</script>
 </body>
 </html>

@@ -16,12 +16,18 @@ public class PatientService {
         return patientRepository.save(client);
     }
     public Patient updateClients(Patient client){
-        Patient old = patientRepository.getById(client.getId());
+        Patient old = patientRepository.getReferenceById(client.getId());
         old.setName(client.getName());
         old.setSurname(client.getSurname());
         old.setPhone(client.getPhone());
         old.setAddress(client.getAddress());
         old.setBirthDate(client.getBirthDate());
+        old.setStatement(client.getStatement());
+        old.setTreatment(client.getTreatment());
+        old.setDoctor(client.getDoctor());
+        //old.setGender(client.getGender());
+        //old.setCity(client.getCity());
+        old.setRoom(client.getRoom());
         patientRepository.save(old);
         return old;
     }

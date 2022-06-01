@@ -43,7 +43,8 @@
         <label class="register-label" for="register_address">Miestas: *</label>
         <select class="register-input" name="city" id="city">
 
-            <option th:each="city: ${cities}" th:value="${city.id}" th:text="${city.name}" th:selected="${city.id == client.city.id}">
+            <option th:each="city: ${cities}" th:value="${city.id}" th:text="${city.name}"
+                    th:selected="${city.id == client.city.id}">
         </select>
     </div>
     <div class="register-input-wrapper">

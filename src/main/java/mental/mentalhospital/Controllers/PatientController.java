@@ -1,7 +1,8 @@
 package mental.mentalhospital.Controllers;
 
+import mental.mentalhospital.Entities.Doctor;
 import mental.mentalhospital.Entities.Patient;
-import mental.mentalhospital.Services.PatientService;
+import mental.mentalhospital.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,46 +18,81 @@ import javax.validation.Valid;
 public class PatientController {
     @Autowired
     PatientService patientService;
-    @GetMapping("/")
+    @Autowired
+    CityService cityService;
+    @Autowired
+    GenderService genderService;
+    @Autowired
+    DoctorService doctorService;
+    @Autowired
+    RoomService roomService;
+    @GetMapping("/patients")
     public String index(Model model){
-        /*Registrations r = new Registrations(patientService.getClients(11),workoutsService.getWorkout(14));
-        registrationsService.add(r);
-        Workouts w = new Workouts("Fitnesas","30/04/2022",6,"sporto sale 1");
-        workoutsService.add(w);*/
-        model.addAttribute("clients", patientService.getAllClients());
-        return "index";
+        model.addAttribute("patients", patientService.getAllClients());
+        return "patients";
     }
-    @GetMapping("/new_client")
+    @GetMapping("/addpatient")
     public String clientNew(Model model){
-        return "new_client";
+        model.addAttribute("cities", cityService.getAllCities());
+        model.addAttribute("genders", genderService.getAllGenders());
+        model.addAttribute("rooms", roomService.getAllClients());
+        model.addAttribute("doctors", doctorService.getAllDoctors());
+        return "addpatient";
     }
-    @PostMapping("/new_client")
-    public String addClient(@Valid @ModelAttribute Patient client, BindingResult result, @RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("email") String email,
-                            @RequestParam("phone")String phone,  Model model){
+    @PostMapping("/addpatient")
+    public String addClient(@Valid @ModelAttribute Patient patient,
+                            BindingResult result,
+                            @RequestParam("name") String name,
+                            @RequestParam("surname") String surname,
+                            @RequestParam("phone")String phone,
+                            @RequestParam("address") String address,
+                            @RequestParam("birthDate") String birthDate,
+                            @RequestParam("statement") String statement,
+                            @RequestParam("treatment") String treatment,
+                            @RequestParam("cityId") Integer cityId,
+                            @RequestParam("genderId") Integer genderId,
+                            @RequestParam("doctor") Integer doctor_ID,
+                            @RequestParam("room") Integer roomId,
+                            Model model){
         if (result.hasErrors()){
-            return "/new_client";
+            model.addAttribute("cities", cityService.getAllCities());
+            model.addAttribute("genders", genderService.getAllGenders());
+            model.addAttribute("rooms", roomService.getAllClients());
+            model.addAttribute("doctors", doctorService.getAllDoctors());
+            return "addpatient";
         }
-        client.setName(name);
-        client.setPhone(phone);
-
-        client.setSurname(surname);
-        //Patient c = new Patient(name,surname,email,phone);
-        patientService.addClients(client);
-        return "redirect:/";
+        System.out.println(doctor_ID);
+        patient.setName(name);
+        patient.setSurname(surname);
+        patient.setPhone(phone);
+        patient.setAddress(address);
+        patient.setBirthDate(birthDate);
+        patient.setTreatment(treatment);
+        patient.setStatement(statement);
+        patient.setCity(cityService.getCity(cityId));
+        patient.setGender(genderService.getGender(genderId));
+        patient.setDoctor(doctorService.getDoctors(doctor_ID));
+        patient.setRoom(roomService.getClients(roomId));
+        patientService.addClients(patient);
+        return "redirect:/patients";
     }
-    @GetMapping("/update_clients")
+    @GetMapping("/editpatient")
     public String clientNew(@RequestParam("id") Integer id, Model model){
-        model.addAttribute("client",patientService.getClients(id));
-        return "update_clients";
+        model.addAttribute("patient",patientService.getClients(id));
+        model.addAttribute("cities", cityService.getAllCities());
+        model.addAttribute("genders", genderService.getAllGenders());
+        model.addAttribute("rooms", roomService.getAllClients());
+        model.addAttribute("doctors", doctorService.getAllDoctors());
+        return "editpatient";
     }
-    @PostMapping("/update_clients")
+    @PostMapping("/editpatient")
     public String clientUpdate(@ModelAttribute Patient c){
         patientService.updateClients(c);
-        return "redirect:/";
+        return "redirect:/patients";
     }
-    @GetMapping("/delete_client")
+    @GetMapping("/deletepatient")
     public String clientDelete(Model model, @RequestParam("id") Integer id){
         patientService.deleteClients(id);
-        return "redirect:/";
+        return "redirect:/patients";
     }
 }
