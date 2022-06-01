@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registracija</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/lt.js"></script>
+    <script src="/scripts.js" defer></script>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+<h1 class="register-heading">Registracija</h1>
+<div class="divider div-transparent"></div>
+<div class="register-container">
+
+    <form method="post" class="register-form" action="addfloor" th:object="${floor}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+        <div class="register-input-wrapper">
+            <label class="register-label" for="room_number">Numeris: </label>
+            <input class="register-input" type="text" id="number" name="number" th:value="${number}">
+        </div>
+        <div class="register-input-wrapper">
+            <label class="register-label" for="room_number">Kambariu skaicius: *</label>
+            <input class="register-input" type="text" id="room_number" name="room_number" th:value="${room_number}">
+
+        </div>
+
+        <input class="register-submit" type="submit" value="Prideti">
+    </form>
+
+
+
+
+
+</div>
+</body>
+</html>

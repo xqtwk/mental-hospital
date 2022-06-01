@@ -39,6 +39,7 @@ public class Patient {
     private String birthDate;
 
 
+
     @ManyToOne
     @MapsId
     @JoinColumn(name="doctorID", nullable = false, insertable = false, updatable = false)

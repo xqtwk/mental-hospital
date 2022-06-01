@@ -11,18 +11,27 @@ public class Floor {
     private Integer id;
 
     @Column(nullable = false, length = 64)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer number;
 
     @Column
     private Integer room_number;
 
-    /*@OneToMany(mappedBy = "floor")
-    private List<Room> rooms;*/
+    @OneToMany(mappedBy = "floor")
+    private List<Room> rooms;
     public Floor(){}
-    public Floor(Integer room_number){
+    public Floor(Integer number, Integer room_number){
+        this.number = number;
         this.room_number = room_number;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getRoom_number() {
         return room_number;
     }

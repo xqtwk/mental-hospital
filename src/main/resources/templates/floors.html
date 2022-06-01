@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Pacientai</title>
+    <title>Aukštai</title>
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,25 +19,19 @@
         <div class="card index">
             <div class="card-body">
                 <div style="text-align: center">
-                    <a href="newpatient.html" class="btn btn-dark">Prideti nauja pacienta</a>
+                    <a href="/addfloor" class="btn btn-dark">Prideti nauja aukštą</a>
                 </div>
                 <table class="main-table">
                     <tr style="text-align: center">
-                        <th>Vardas</th>
-                        <th>Pavarde</th>
-                        <th>Telefonas</th>
-                        <th>Adresas</th>
-                        <th>Gimimo data</th>
+                        <th>Numeris</th>
+                        <th>Kambariu skaicius</th>
                     </tr>
-                    <tr th:each="patient: ${patients}" style="border-bottom: 1px solid #D5D5D5; text-align: center">
-                        <td th:text="${patient.name}"></td>
-                        <td th:text="${patient.surname}"></td>
-                        <td th:text="${patient.phone}"></td>
-                        <td th:text="${patient.address}"></td>
-                        <td th:text="${patient.birthDate}"></td>
+                    <tr th:each="floor: ${floors}" style="border-bottom: 1px solid #D5D5D5; text-align: center">
+                        <td th:text="${floor.number}"></td>
+                        <td th:text="${floor.room_number}"></td>
                         <td>
-                            <a th:href="'editdoctor?id='+${patient.id}" class="btn">Redaguoti</a>
-                            <a th:href="'deletedoctor?id='+${patient.id}" href="#" class="btn">Pasalinti</a>
+                            <a th:href="'editfloor?id='+${floor.id}" class="btn">Redaguoti</a>
+                            <a th:href="'deletefloor?id='+${floor.id}" href="#" class="btn">Pasalinti</a>
                         </td>
                     </tr>
                 </table>
