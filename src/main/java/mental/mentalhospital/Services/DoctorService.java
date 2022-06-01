@@ -17,14 +17,13 @@ public class DoctorService implements UserDetailsService {
     DoctorRepository doctorRepository;
 
     public Doctor editDoctor(Doctor client){
-        //Doctor old = getDoctors(client.getId());
         Doctor old = doctorRepository.findByEmail(client.getEmail());
         old.setName(client.getName());
         old.setSurname(client.getSurname());
         //old.setEmail(client.getEmail());
         old.setPhone(client.getPhone());
         old.setAddress(client.getAddress());
-        //old.setGender(client.getGender());
+        old.setGender(client.getGender());
         old.setCity(client.getCity());
         old.setBirthDate(client.getBirthDate());
         doctorRepository.save(old);

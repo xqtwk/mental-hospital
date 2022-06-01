@@ -48,6 +48,7 @@ public class RegisterController {
             model.addAttribute("genders", genderService.getAllGenders());
             return "register";
         }
+        System.out.println(doctor.getName());
         doctor.setCity(cityService.getCity(cityId));
         doctor.setGender(genderService.getGender(genderId));
         doctorService.addClient(doctor);

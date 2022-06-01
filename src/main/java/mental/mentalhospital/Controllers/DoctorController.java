@@ -41,14 +41,12 @@ public class DoctorController {
     }
     @PostMapping("/editdoctor")
     public String clientUpdate(@ModelAttribute Doctor c,BindingResult result){
-        System.out.println(c.getCity().getName());
-        //System.out.println(doctorService.editDoctor(c).getAddress());
-        doctorService.editDoctor(c).getCity();
+        doctorService.editDoctor(c);
         return "redirect:/doctorsadmin";
     }
     @GetMapping("/deletedoctor")
     public String clientDelete(Model model, @RequestParam("id") Integer id){
         doctorService.deleteDoctors(id);
-        return "redirect:/";
+        return "redirect:/doctorsadmin";
     }
 }

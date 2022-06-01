@@ -479,3 +479,21 @@ input[type="checkbox"] {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {}
+.btn{
+    display:inline-block;
+    padding:0.7em 1.4em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:0.15em;
+    background-color: #CCCCCC;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    text-transform:uppercase;
+    font-weight:400;
+    text-align:center;
+    position:relative;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

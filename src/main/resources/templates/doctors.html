@@ -17,7 +17,7 @@
 <div class="container">
     <div class="row md-5">
         <div class="card index">
-            <div sec:authorize="isAuthenticated()" class="card-body d-flex justify-content-center">
+            <div style="text-align: center;" sec:authorize="isAuthenticated()" >
                 <a sec:authorize="isAuthenticated()" href="doctorsadmin" class="btn btn-dark">Daktarų redagavimas / pašalinimas</a>
             </div>
             <div class="card-body d-flex justify-content-center">
@@ -30,8 +30,9 @@
                         <th>Gimimo data</th>
                         <th>Adresas</th>
                         <th>Miestas</th>
+                        <th>Lytis</th>
                     </tr>
-                    <tr th:each="doctor: ${doctors}" style="border-bottom: 1px solid #D5D5D5">
+                    <tr th:each="doctor: ${doctors}" style="border-bottom: 1px solid #D5D5D5; text-align: center">
                         <td th:text="${doctor.name}"></td>
                         <td th:text="${doctor.surname}"></td>
                         <td th:text="${doctor.email}"></td>
@@ -39,6 +40,7 @@
                         <td th:text="${doctor.birthDate}"></td>
                         <td th:text="${doctor.address}"></td>
                         <td th:text="${doctor.city.name}"></td>
+                        <td th:text="${doctor.gender.name}"></td>
                     </tr>
                 </table>
             </div>

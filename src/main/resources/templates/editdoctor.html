@@ -48,8 +48,8 @@
     </div>
     <div class="register-input-wrapper">
         <label class="register-label" for="register_address">Lytis: *</label>
-        <select class="register-input" name="genderId">
-            <option th:each="gender: ${genders}" th:value="${gender.id}" th:text="${gender.name}">
+        <select class="register-input" name="gender">
+            <option th:each="gender: ${genders}" th:value="${gender.id}" th:text="${gender.name}" th:selected="${gender.id == client.gender.id}">
         </select>
 
     </div>
