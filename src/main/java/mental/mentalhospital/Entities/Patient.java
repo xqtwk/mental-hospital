@@ -38,7 +38,8 @@ public class Patient {
     @DateConstraint
     private String birthDate;
 
-
+    @Column
+    private String filename;
 
     @ManyToOne
     @JoinColumn(name="doctorID", nullable = false)
@@ -92,7 +93,13 @@ public class Patient {
         this.treatment = treatment;
         this.statement = statement;
     }
+    public String getFilename() {
+        return filename;
+    }
 
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
     public Integer getId() {
         return id;
     }

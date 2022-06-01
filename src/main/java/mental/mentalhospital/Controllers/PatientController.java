@@ -4,13 +4,14 @@ import mental.mentalhospital.Entities.Doctor;
 import mental.mentalhospital.Entities.Patient;
 import mental.mentalhospital.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 
@@ -26,6 +27,10 @@ public class PatientController {
     DoctorService doctorService;
     @Autowired
     RoomService roomService;
+    @Autowired
+    FileStorageService fileStorageService;
+    @Autowired
+    FileUploadController fileUploadController;
     @GetMapping("/patients")
     public String index(Model model){
         model.addAttribute("patients", patientService.getAllClients());
@@ -53,6 +58,7 @@ public class PatientController {
                             @RequestParam("genderId") Integer genderId,
                             @RequestParam("doctor") Integer doctor_ID,
                             @RequestParam("room") Integer roomId,
+                            @RequestParam("description") MultipartFile description,
                             Model model){
         if (result.hasErrors()){
             model.addAttribute("cities", cityService.getAllCities());
@@ -73,7 +79,9 @@ public class PatientController {
         patient.setGender(genderService.getGender(genderId));
         patient.setDoctor(doctorService.getDoctors(doctor_ID));
         patient.setRoom(roomService.getClients(roomId));
+        patient.setFilename(description.getOriginalFilename());
         patientService.addClients(patient);
+        fileStorageService.store(description, patient.getId().toString());
         return "redirect:/patients";
     }
     @GetMapping("/editpatient")
@@ -94,5 +102,15 @@ public class PatientController {
     public String clientDelete(Model model, @RequestParam("id") Integer id){
         patientService.deleteClients(id);
         return "redirect:/patients";
+    }
+    @GetMapping("/patient/{id}")
+    @ResponseBody
+    public ResponseEntity<Resource> getDescription(@PathVariable Integer id){
+        Resource file = fileStorageService.loadFile(id.toString());
+        Patient w = patientService.getClients(id);
+        return ResponseEntity
+                .ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+w.getFilename()+"\"")
+                .body(file);
     }
 }

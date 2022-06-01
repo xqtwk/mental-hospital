@@ -19,7 +19,7 @@
 <div class="divider div-transparent"></div>
 <div class="register-container">
 
-    <form method="post" class="register-form" action="/addpatient" th:object="${patient}">
+    <form method="post" class="register-form" action="/addpatient" th:object="${patient}" enctype="multipart/form-data">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
         <div class="register-input-wrapper">
@@ -78,7 +78,10 @@
             <label class="register-label" for="treatment">Sąlygos: *</label>
             <input class="register-input" type="text" id="treatment" name="treatment" th:value="${treatment}">
         </div>
-
+        <div class="register-input-wrapper">
+            <label class="form-label">Aprasymo failas: </label>
+            <input type="file" class="form-control" name="description">
+        </div>
         <input class="register-submit" type="submit" value="Registruotis">
     </form>
 

@@ -43,6 +43,7 @@
                         <td th:text="${patient.gender.name}"></td>
                         <td th:text="${patient.statement}"></td>
                         <td th:text="${patient.treatment}"></td>
+                        <td><a th:href="'/patient/'+${patient.id}" class="">Parsisiųsti</a></td>
                         <td>
                             <a th:href="'editpatient?id='+${patient.id}" class="btn">Redaguoti</a>
                             <a th:href="'deletepatient?id='+${patient.id}" href="#" class="btn">Pasalinti</a>

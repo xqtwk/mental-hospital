@@ -11,7 +11,8 @@ import java.util.List;
 public class PatientService {
     @Autowired
     PatientRepository patientRepository;
-
+    @Autowired
+    FileStorageService fileStorageService;
     public Patient addClients(Patient client){
         return patientRepository.save(client);
     }
@@ -28,6 +29,7 @@ public class PatientService {
         //old.setGender(client.getGender());
         //old.setCity(client.getCity());
         old.setRoom(client.getRoom());
+        old.setFilename(client.getFilename());
         patientRepository.save(old);
         return old;
     }
