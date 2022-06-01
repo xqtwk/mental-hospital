@@ -1,7 +1,7 @@
 package mental.mentalhospital.Services;
 
-import mental.mentalhospital.Entities.Floor;
-import mental.mentalhospital.Repositories.FloorRepository;
+import mental.mentalhospital.Entities.Room;
+import mental.mentalhospital.Repositories.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,25 +10,26 @@ import java.util.List;
 @Service
 public class RoomService {
     @Autowired
-    FloorRepository floorRepository;
+    RoomRepository roomRepository;
 
-    public Floor addClients(Floor client){
-        return floorRepository.save(client);
+    public Room addClients(Room client){
+        return roomRepository.save(client);
     }
-    public Floor updateClients(Floor client){
-        Floor old = floorRepository.getById(client.getId());
-        old.setNumber(client.getNumber());
+    public Room updateClients(Room client){
+        Room old = roomRepository.getById(client.getId());
         old.setRoom_number(client.getRoom_number());
-        floorRepository.save(old);
+        old.setRoom_description(client.getRoom_description());
+        old.setPatients_limit(client.getPatients_limit());
+        roomRepository.save(old);
         return old;
     }
     public void deleteClients( Integer id){
-        floorRepository.deleteById(id);
+        roomRepository.deleteById(id);
     }
-    public Floor getClients(Integer id){
-        return floorRepository.getById(id);
+    public Room getClients(Integer id){
+        return roomRepository.getById(id);
     }
-    public List<Floor> getAllClients(){
-        return floorRepository.findAll();
+    public List<Room> getAllClients(){
+        return roomRepository.findAll();
     }
 }

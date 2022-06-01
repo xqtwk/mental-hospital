@@ -11,7 +11,6 @@ public class Room {
     private Integer id;
 
     @Column(nullable = false, length = 64)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer room_number;
     @Column
     private String room_description;
@@ -26,7 +25,8 @@ public class Room {
     private List<Patient> patients;
     public Room() {}
 
-    public Room(String room_description, Integer patients_limit) {
+    public Room(Integer room_number, String room_description, Integer patients_limit) {
+        this.room_number = room_number;
         this.room_description = room_description;
         this.patients_limit = patients_limit;
     }
@@ -60,5 +60,13 @@ public class Room {
 
     public void setPatients_limit(Integer patients_limit) {
         this.patients_limit = patients_limit;
+    }
+
+    public Floor getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Floor floor) {
+        this.floor = floor;
     }
 }

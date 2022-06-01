@@ -2,9 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kambariai</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/lt.js"></script>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
+<div th:insert="fragments/navigation.html :: nav"></div>
+<div class="container">
+    <div class="row md-5">
+        <div class="card index">
+            <div class="card-body">
+                <div style="text-align: center">
+                    <a href="/addroom" class="btn btn-dark">Prideti nauja kambarį</a>
+                </div>
+                <table class="main-table">
+                    <tr style="text-align: center">
+                        <th>Numeris</th>
+                        <th>Vietų skaičius</th>
+                        <th>Aukštas</th>
+                        <th>Aprašymas</th>
+                    </tr>
+                    <tr th:each="room: ${rooms}" style="border-bottom: 1px solid #D5D5D5; text-align: center">
+                        <td th:text="${room.room_number}"></td>
+                        <td th:text="${room.patients_limit}"></td>
+                        <td th:text="${room.floor.number}"></td>
+                        <td th:text="${room.room_description}"></td>
+                        <td>
+                            <a th:href="'editroom?id='+${room.id}" class="btn">Redaguoti</a>
+                            <a th:href="'deleteroom?id='+${room.id}" href="#" class="btn">Pasalinti</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
+        </div>
+    </div>
 </body>
 </html>

@@ -2,9 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kambario pridėjimas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/lt.js"></script>
+    <script src="/scripts.js" defer></script>
+    <link rel="stylesheet" href="/styles.css">
+
 </head>
 <body>
+<h1 class="register-heading">Kambario pridėjimas</h1>
+<div class="divider div-transparent"></div>
+<div class="register-container">
 
+    <form method="post" class="register-form" action="addroom" th:object="${room}">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+        <div class="register-input-wrapper">
+            <label class="register-label" for="room_number">Numeris: *</label>
+            <input class="register-input" type="text" id="room_number" name="room_number" th:value="${room_number}">
+        </div>
+        <div class="register-input-wrapper">
+            <label class="register-label" for="patients_limit">Vietų: *</label>
+            <input class="register-input" type="text" id="patients_limit" name="patients_limit" th:value="${patients_limit}">
+        </div>
+        <div class="register-input-wrapper">
+            <label class="register-label" for="floor">Aukštas</label>
+            <select class="register-input" name="floor" id="floor">
+                <option th:each="floor: ${floors}" th:value="${floor.id}" th:text="${floor.number}">
+            </select>
+        </div>
+        <div class="register-input-wrapper">
+            <label class="register-label" for="room_description">Aprašymas: *</label>
+            <input type="text" class="register-input" id="room_description" name="room_description" th:value="${room_description}"
+                      width="200px" height="200px">
+        </div>
+        <input class="register-submit" type="submit" value="Prideti">
+    </form>
+
+
+
+
+
+</div>
 </body>
 </html>
